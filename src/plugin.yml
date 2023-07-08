@@ -1,0 +1,8 @@
+name: CoreStaff
+version: beta_1.0
+author: EdmineCoreTeam
+main: fr.edminecoreteam.corestaff.Core
+commands:
+  moderation:
+    description: Commande de modération
+    aliases: [mod]
