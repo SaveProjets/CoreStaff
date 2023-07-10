@@ -7,7 +7,6 @@ import fr.edminecoreteam.corestaff.edorm.MySQL;
 import fr.edminecoreteam.corestaff.edorm.SQLState;
 import fr.edminecoreteam.corestaff.managers.PlayerManager;
 import org.bukkit.Bukkit;
-import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;

@@ -125,8 +125,8 @@ public class PlayerManager {
         p.setAllowFlight(false);
         setVanished(false);
         for(Player players : Bukkit.getOnlinePlayers()){
-            if(!players.hasPermission("evolnia.mod")){
-                players.sendMessage(Core.getInstance().getConfig().getString("join").replaceAll("&", "§").replaceAll("%player%", p.getName()));
+            if(!hasPermission(p)){
+               // players.sendMessage(Core.getInstance().getConfig().getString("join").replaceAll("&", "§").replaceAll("%player%", p.getName()));
             }else{
                 players.sendMessage("§7Le modérateur " + p.getName() + " vient de désactiver son §c/mod §7!");
             }
@@ -149,15 +149,11 @@ public class PlayerManager {
         return vanished;
     }
 
-    public void setVanished(boolean vanished){
+    private void setVanished(boolean vanished){
         this.vanished = vanished;
         if(vanished){
             for(Player players : Bukkit.getOnlinePlayers()){
-                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "tab player " + p.getName() + " tabprefix &c[Vanish] ");
-                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "tab player " + p.getName() + " customtabname &c " + p.getName());
-                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "tab player " + p.getName() + " customtagname &c " + p.getName());
-                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "tab player " + p.getName() + " tagprefix &c[Vanish] ");
-                if(!players.hasPermission("evolnia.mod")){
+                if(!hasPermission(p)){
                     players.hidePlayer(p);
                 }
             }
@@ -171,7 +167,7 @@ public class PlayerManager {
         }
     }
 
-    public void saveInventory(){
+    private void saveInventory(){
         for(int slot = 0; slot < 36; slot++){
             ItemStack item = p.getInventory().getItem(slot);
             if(item != null){
@@ -191,7 +187,7 @@ public class PlayerManager {
         p.getInventory().setBoots(null);
     }
 
-    public void giveInventory(){
+    private void giveInventory(){
         p.getInventory().clear();
         for(int slot = 0; slot < 36; slot++){
             ItemStack item = items[slot];
