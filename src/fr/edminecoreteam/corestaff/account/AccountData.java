@@ -1,46 +1,26 @@
 package fr.edminecoreteam.corestaff.account;
 
 import fr.edminecoreteam.corestaff.edorm.MySQL;
-import org.bukkit.entity.Player;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class RankData 
+public class AccountData
 {
-	private Player p;
+	private String p;
 	
-    public RankData(Player p) 
+    public AccountData(String p)
     {
         this.p = p;
     }
-    
-    public void updateRankName(String name) 
-    {
-    	if (hasRank()) 
-        {
-            try 
-            {
-            	PreparedStatement preparedStatement = MySQL.getConnection().prepareStatement("UPDATE ed_ranks SET player_rank_name = ? WHERE player_name = ?");
-                preparedStatement.setString(1, name);
-                preparedStatement.setString(2, p.getName());
-                preparedStatement.executeUpdate();
-                preparedStatement.close();
-            }
-            catch (SQLException e) 
-            {
-                e.toString();
-            }
-        }
-	}
     
     public boolean hasRank()
     {
         try 
         {
             PreparedStatement preparedStatement = MySQL.getConnection().prepareStatement("SELECT player_rank_id FROM ed_ranks WHERE player_name = ?");
-            preparedStatement.setString(1, p.getName());
+            preparedStatement.setString(1, p);
             ResultSet rs = preparedStatement.executeQuery();
             return rs.next();
         }
@@ -55,8 +35,8 @@ public class RankData
     {
         try 
         {
-            PreparedStatement preparedStatement = MySQL.getConnection().prepareStatement("SELECT player_rank_id FROM ed_ranks WHERE player_uuid = ?");
-            preparedStatement.setString(1, p.getUniqueId().toString().replaceAll("-", ""));
+            PreparedStatement preparedStatement = MySQL.getConnection().prepareStatement("SELECT player_rank_id FROM ed_ranks WHERE player_name = ?");
+            preparedStatement.setString(1, p);
             int power = 0;
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) 
@@ -79,8 +59,8 @@ public class RankData
         {
             try 
             {
-            	 PreparedStatement preparedStatement = MySQL.getConnection().prepareStatement("SELECT player_rank_type FROM ed_ranks WHERE player_uuid = ?");
-                 preparedStatement.setString(1, p.getUniqueId().toString().replaceAll("-", ""));
+            	 PreparedStatement preparedStatement = MySQL.getConnection().prepareStatement("SELECT player_rank_type FROM ed_ranks WHERE player_name = ?");
+                 preparedStatement.setString(1, p);
                  String response = "";
                  ResultSet rs = preparedStatement.executeQuery();
                  while (rs.next()) 
@@ -104,8 +84,8 @@ public class RankData
         {
             try 
             {
-            	PreparedStatement preparedStatement = MySQL.getConnection().prepareStatement("SELECT player_rank_purchase_date FROM ed_ranks WHERE player_uuid = ?");
-                preparedStatement.setString(1, p.getUniqueId().toString().replaceAll("-", ""));
+            	PreparedStatement preparedStatement = MySQL.getConnection().prepareStatement("SELECT player_rank_purchase_date FROM ed_ranks WHERE player_name = ?");
+                preparedStatement.setString(1, p);
                 String response = "";
                 ResultSet rs = preparedStatement.executeQuery();
                 while (rs.next()) 
@@ -129,8 +109,8 @@ public class RankData
         {
             try 
             {
-            	 PreparedStatement preparedStatement = MySQL.getConnection().prepareStatement("SELECT player_rank_deadline_date FROM ed_ranks WHERE player_uuid = ?");
-                 preparedStatement.setString(1, p.getUniqueId().toString().replaceAll("-", ""));
+            	 PreparedStatement preparedStatement = MySQL.getConnection().prepareStatement("SELECT player_rank_deadline_date FROM ed_ranks WHERE player_name = ?");
+                 preparedStatement.setString(1, p);
                  String response = "";
                  ResultSet rs = preparedStatement.executeQuery();
                  while (rs.next()) 
@@ -154,8 +134,8 @@ public class RankData
         {
             try 
             {
-            	 PreparedStatement preparedStatement = MySQL.getConnection().prepareStatement("SELECT player_modulable_rank FROM ed_ranks WHERE player_uuid = ?");
-                 preparedStatement.setString(1, p.getUniqueId().toString().replaceAll("-", ""));
+            	 PreparedStatement preparedStatement = MySQL.getConnection().prepareStatement("SELECT player_modulable_rank FROM ed_ranks WHERE player_name = ?");
+                 preparedStatement.setString(1, p);
                  int response = 0;
                  ResultSet rs = preparedStatement.executeQuery();
                  while (rs.next()) 
@@ -172,4 +152,34 @@ public class RankData
         }
     	return 0;
 	}
+
+    public String getRankName(){
+        try{
+            PreparedStatement ps = MySQL.getConnection().prepareStatement("SELECT player_rank_name FROM ed_ranks WHERE player_name = ?");
+            ps.setString(1, p);
+            String response = "§7Le §astaff";
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()){
+                response = rs.getString("player_rank_name");
+            }
+            if(response.equalsIgnoreCase("MOD")){
+                response = "§7Le §9modérateur";
+            }else if(response.equalsIgnoreCase("DEV")){
+                response = "§7Le §5développeur";
+            }else if (response.equalsIgnoreCase("RESP")){
+                response = "§7Le §4responsable";
+            }else if(response.equalsIgnoreCase("ADMIN")){
+                response = "§7L'§cadministrateur";
+            }else {
+                response = "§7Le §astaff";
+            }
+            ps.close();
+            return response;
+        }
+        catch (SQLException e){
+            e.toString();
+        }
+        return "§7Le §astaff";
+    }
+
 }
