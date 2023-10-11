@@ -2,6 +2,7 @@ package fr.edminecoreteam.corestaff;
 
 import fr.edminecoreteam.corestaff.commands.CommandChat;
 import fr.edminecoreteam.corestaff.commands.CommandFreeze;
+import fr.edminecoreteam.corestaff.commands.CommandHistory;
 import fr.edminecoreteam.corestaff.commands.CommandVanish;
 import fr.edminecoreteam.corestaff.edorm.MySQL;
 import fr.edminecoreteam.corestaff.edorm.SQLState;
@@ -79,6 +80,7 @@ public class Core extends JavaPlugin {
         getCommand("vanish").setExecutor(new CommandVanish());
         getCommand("chat").setExecutor(new CommandChat());
         getCommand("freeze").setExecutor(new CommandFreeze());
+        getCommand("history").setExecutor(new CommandHistory());
     }
 
     private void loadPluginChannel(){

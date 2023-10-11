@@ -3,7 +3,7 @@ package fr.edminecoreteam.corestaff.listeners.PluginMessage;
 import com.google.common.io.ByteArrayDataInput;
 import com.google.common.io.ByteStreams;
 import fr.edminecoreteam.corestaff.Core;
-import fr.edminecoreteam.corestaff.account.AccountInfo;
+import fr.edminecoreteam.corestaff.account.account.AccountInfo;
 import fr.edminecoreteam.corestaff.utils.PlayerManager;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -48,11 +48,11 @@ public class ReceivedPluginMessage implements PluginMessageListener {
 
             for(UUID staff : staffList){
                 Player staffP = Bukkit.getPlayer(staff);
-                if(staffP != null && staffP.isOnline()){
+                if(staffP != null && staffP.isOnline() && !staffP.getName().equalsIgnoreCase(playerName)){
                     if(modActivation){
-                        staffP.sendMessage(Core.getInstance().staffPrefix + accountInfo.getRankName() + " §e" + playerName + "§7 vient d'activer son §b/mod §7!");
+                        staffP.sendMessage( Core.getInstance().staffPrefix + "§e" + playerName + "§7 vient d'activer son §b/mod §7!");
                     }else{
-                        staffP.sendMessage(Core.getInstance().staffPrefix + accountInfo.getRankName() + " §e" + playerName + " §7vient de désactiver son §c/mod §7!");
+                        staffP.sendMessage(Core.getInstance().staffPrefix + "§e" + playerName + " §7vient de désactiver son §c/mod §7!");
                     }
                 }
             }

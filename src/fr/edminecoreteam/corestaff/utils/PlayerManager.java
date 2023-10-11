@@ -1,7 +1,7 @@
 package fr.edminecoreteam.corestaff.utils;
 
 import fr.edminecoreteam.corestaff.Core;
-import fr.edminecoreteam.corestaff.account.AccountInfo;
+import fr.edminecoreteam.corestaff.account.account.AccountInfo;
 import fr.edminecoreteam.corestaff.listeners.PluginMessage.ReceivedPluginMessage;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;

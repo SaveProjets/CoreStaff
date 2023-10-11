@@ -11,3 +11,5 @@ commands:
   chat:
     description: Commande de gestion du chat
     aliases: [c]
+  history:
+    description: Commande d'historique des joueurs

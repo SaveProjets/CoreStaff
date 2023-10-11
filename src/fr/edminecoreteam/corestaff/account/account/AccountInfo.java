@@ -1,4 +1,4 @@
-package fr.edminecoreteam.corestaff.account;
+package fr.edminecoreteam.corestaff.account.account;
 
 
 import java.util.HashMap;
