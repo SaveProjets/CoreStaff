@@ -1,14 +1,12 @@
 package fr.edminecoreteam.corestaff.commands;
 
+import fr.edminecoreteam.api.utils.PlayerManager;
 import fr.edminecoreteam.corestaff.Core;
-import fr.edminecoreteam.corestaff.utils.PlayerManager;
-import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
-import org.bukkit.entity.Player;
 
 public class CommandChat implements CommandExecutor {
 
