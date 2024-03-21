@@ -1,14 +1,15 @@
 package fr.edminecoreteam.corestaff;
 
+import fr.edminecoreteam.corestaff.edorm.MySQL;
+import fr.edminecoreteam.corestaff.edorm.SQLState;
+import corestaff.listeners.*;
+import fr.edminecoreteam.corestaff.utils.PlayerManager;
 import fr.edminecoreteam.corestaff.commands.CommandChat;
 import fr.edminecoreteam.corestaff.commands.CommandFreeze;
 import fr.edminecoreteam.corestaff.commands.CommandHistory;
 import fr.edminecoreteam.corestaff.commands.CommandVanish;
-import fr.edminecoreteam.corestaff.edorm.MySQL;
-import fr.edminecoreteam.corestaff.edorm.SQLState;
 import fr.edminecoreteam.corestaff.listeners.*;
 import fr.edminecoreteam.corestaff.listeners.PluginMessage.ReceivedPluginMessage;
-import fr.edminecoreteam.corestaff.utils.PlayerManager;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;

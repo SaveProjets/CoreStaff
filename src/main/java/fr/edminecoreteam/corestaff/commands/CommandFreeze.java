@@ -2,7 +2,6 @@ package fr.edminecoreteam.corestaff.commands;
 
 import fr.edminecoreteam.corestaff.Core;
 import fr.edminecoreteam.corestaff.utils.PlayerManager;
-import fr.edminecoreteam.corestaff.utils.VanishItemManager;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
