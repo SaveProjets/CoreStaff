@@ -1,6 +1,6 @@
 package fr.edminecoreteam.corestaff.utils;
 
-import fr.edminecoreteam.api.spigot.item.ItemManager;
+import fr.edminecoreteam.api.utils.builder.ItemBuilder;
 import fr.edminecoreteam.corestaff.Core;
 import fr.edminecoreteam.corestaff.account.account.AccountInfo;
 import fr.edminecoreteam.corestaff.listeners.PluginMessage.ReceivedPluginMessage;
@@ -44,35 +44,34 @@ public class PlayerManager {
         p.setHealth(20);
         p.setFoodLevel(20);
 
-
-        ItemManager itM = new ItemManager();
-        ItemStack invsee = itM.createItem(Material.PAPER)
+        
+        ItemStack invsee = new ItemBuilder(Material.PAPER)
                 .setName("§e§lOuvrir l'inventaire §7• Clique")
                 .setLore(Arrays.asList("§7Faites un clique droit", "§7sur un §cjoueur", "§7pour afficher son inventaire.")).toItemStack();
 
-        ItemStack freeze = itM.createItem(Material.ICE)
+        ItemStack freeze = new ItemBuilder(Material.ICE)
                 .setName("§b§lFreeze §7• Clique")
                 .setLore(Arrays.asList("§7Faites un clique droit", "§7sur un §cjoueur", "§7pour pouvoir le §c§lFREEZE.")).toItemStack();
 
-        ItemStack knockback = itM.createItem(Material.STICK)
+        ItemStack knockback = new ItemBuilder(Material.STICK)
                 .setName("§d§lBâton KB §7• Clique")
                 .setLore(Arrays.asList("§7Faites un clique gauche", "§7sur un §cjoueur", "§7pour pouvoir tester son KB."))
                 .addEnchant(Enchantment.KNOCKBACK, 10).hideItemFlags().toItemStack();
 
-        ItemStack tpRandom = itM.createItem(Material.COMPASS)
+        ItemStack tpRandom = new ItemBuilder(Material.COMPASS)
                 .setName("§a§lTéléportation Aléatoire §7• Clique")
                 .setLore(Arrays.asList("§7Faites un clique droit", "§7pour être téléporté", "§7sur un joueur §c§lALEATOIRE.")).toItemStack();
 
 
-        ItemStack modMenu = itM.createItem(Material.ARMOR_STAND)
+        ItemStack modMenu = new ItemBuilder(Material.ARMOR_STAND)
                 .setName("§9§lMenu de Modération §7• Clique")
                 .setLore(Arrays.asList("§7Faites un clique droit", "§7pour ouvrir le menu", "§7de Modération.")).toItemStack();
 
-        ItemStack tpPlayer = itM.createItem(Material.EYE_OF_ENDER)
+        ItemStack tpPlayer = new ItemBuilder(Material.EYE_OF_ENDER)
                 .setName("§a§lSe téléporter au joueur §7• Clique")
                 .setLore(Arrays.asList("§7Faites un clique droit", "§7pour vous téléporter au joueur", "§7ciblé.")).toItemStack();
 
-        ItemStack infoPlayer = itM.createItem(Material.ENCHANTED_BOOK)
+        ItemStack infoPlayer = new ItemBuilder(Material.ENCHANTED_BOOK)
                 .setName("§c§lAfficher les informations du joueur §7• Clique")
                 .setLore(Arrays.asList("§7Faites un clique droit sur un joueur", "§7pour avoir des informations concernant", "§7celui-ci.")).toItemStack();
 

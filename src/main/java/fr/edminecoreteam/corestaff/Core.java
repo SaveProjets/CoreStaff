@@ -2,7 +2,6 @@ package fr.edminecoreteam.corestaff;
 
 import fr.edminecoreteam.corestaff.edorm.MySQL;
 import fr.edminecoreteam.corestaff.edorm.SQLState;
-import corestaff.listeners.*;
 import fr.edminecoreteam.corestaff.utils.PlayerManager;
 import fr.edminecoreteam.corestaff.commands.CommandChat;
 import fr.edminecoreteam.corestaff.commands.CommandFreeze;

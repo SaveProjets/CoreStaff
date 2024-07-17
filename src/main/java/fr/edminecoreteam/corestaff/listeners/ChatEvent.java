@@ -1,7 +1,7 @@
 package fr.edminecoreteam.corestaff.listeners;
 
-import fr.edminecoreteam.api.management.PlayerManager;
 import fr.edminecoreteam.corestaff.Core;
+import fr.edminecoreteam.corestaff.utils.PlayerManager;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
