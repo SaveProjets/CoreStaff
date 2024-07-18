@@ -56,7 +56,7 @@ public class PlayerManager {
         ItemStack knockback = new ItemBuilder(Material.STICK)
                 .setName("§d§lBâton KB §7• Clique")
                 .setLore(Arrays.asList("§7Faites un clique gauche", "§7sur un §cjoueur", "§7pour pouvoir tester son KB."))
-                .addEnchant(Enchantment.KNOCKBACK, 10).hideItemFlags().toItemStack();
+                .addEnchant(Enchantment.KNOCKBACK, 10).hideEnchantments().toItemStack();
 
         ItemStack tpRandom = new ItemBuilder(Material.COMPASS)
                 .setName("§a§lTéléportation Aléatoire §7• Clique")
